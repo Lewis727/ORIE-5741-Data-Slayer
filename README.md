@@ -1,1 +1,3 @@
-# ORIE-5741-Data-Slayer
+Anomaly Detection in the U.S Electricity Grid data
+Jiaqi Ding jd2269
+
