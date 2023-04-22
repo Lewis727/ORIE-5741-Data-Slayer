@@ -12,7 +12,12 @@ regions = ['AVA', 'AVRN', 'BPAT', 'CHPD', 'DOPD', 'GCPD', 'GRID', 'GWA', 'IPCO',
 for r in regions:
     region = pd.read_excel(dir + r + '.xlsx', index_col=1)
     region.index = pd.to_datetime(region.index)
-    temp = region['D']
+    region = region.fillna(0)
+    idx = region['Imputed D'] != 0
+    region.loc[idx, 'D'] = region.loc[idx, 'Imputed D']
+    idx = region['Imputed NG'] != 0
+    region.loc[idx, 'NG'] = region.loc[idx, 'Imputed NG']
+    temp = region[['D', 'NG']]
     data = data.join(temp, rsuffix='_'+r)
 data = data.dropna(axis='columns', how='all')
 data = data.dropna()
