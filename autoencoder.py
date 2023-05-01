@@ -1,6 +1,4 @@
-import tensorflow as tf
-from tensorflow.keras.layers import Input, Dense
-from tensorflow.keras.models import Model
+import tensorflow.keras as tk
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
@@ -8,7 +6,7 @@ import matplotlib.pyplot as plt
 # Prepare the data
 path = os.path.realpath(__file__)
 dir = os.path.dirname(path)
-dir += '\Data\\'
+dir += '/Data/'
 data = pd.read_csv(dir + 'data.csv', index_col=0)
 data.index = pd.to_datetime(data.index)
 x_train = data
