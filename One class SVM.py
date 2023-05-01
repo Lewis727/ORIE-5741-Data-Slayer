@@ -11,7 +11,7 @@ data = pd.read_csv(dir + 'data.csv', index_col=0)
 data.index = pd.to_datetime(data.index)
 
 # Train the model
-clf = OneClassSVM(gamma='auto', nu=0.05)
+clf = OneClassSVM(kernel='sigmoid', gamma='auto', nu=0.0005)
 clf.fit(data)
 
 # Test the model
@@ -19,9 +19,12 @@ y_pred = clf.predict(data)
 
 plt.figure(figsize=(15, 7))
 fig, ax = plt.subplots()
-ax.plot(data.index, data['D'], label='Time Series Data')
+ax.plot(data.index, data['D'], alpha=0.6, label='Time Series Data')
 anomalies = data[y_pred == -1]
 ax.scatter(anomalies.index, anomalies['D'], color='red', label='Anomalies')
-
 plt.legend()
-plt.savefig('ocsvm.jpg')
+plt.savefig('ocs.jpg')
+print(len(anomalies)/len(data))
+res = pd.DataFrame(y_pred)
+res.index = data.index
+res.to_csv('one class svm.csv')
