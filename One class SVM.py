@@ -28,3 +28,4 @@ print(len(anomalies)/len(data))
 res = pd.DataFrame(y_pred)
 res.index = data.index
 res.to_csv('one class svm.csv')
+
