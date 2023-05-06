@@ -11,7 +11,7 @@ data = pd.read_csv(dir + 'data.csv', index_col=0)
 data.index = pd.to_datetime(data.index)
 
 # Train the model
-clf = OneClassSVM(kernel='sigmoid', gamma='auto', nu=0.0005)
+clf = OneClassSVM(kernel='sigmoid', gamma='auto', nu=0.002)
 clf.fit(data)
 
 # Test the model
