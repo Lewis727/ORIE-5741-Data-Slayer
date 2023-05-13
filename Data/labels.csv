@@ -1,4 +1,4 @@
-,iforest_label,random_forest,one class svm,autoencoder,kmeans,dbscan,mode
+,isolation forest,random forest,one class svm,autoencoder,kmeans,dbscan,final label
 0,1,1,1,1,1,1,1
 1,1,1,1,1,1,1,1
 2,1,1,1,1,1,1,1
